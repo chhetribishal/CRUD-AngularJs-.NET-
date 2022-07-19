@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+}
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/Products.js"></script>
+<h2>Product</h2>
+
+<div ng-app="myApp">
+    <div ng-controller="myCntrl">
+      
+           <div class="form-horizontal" role="form">
+               <div class="container">
+                   <div class="row">
+
+                       <div class="col-sm-3">
+                           <div class="form-group">
+                               <label class="control-label">Product Name:</label>
+                               <input type="text" class="form-control" ng-model="pname" />
+
+                           </div>
+                       </div>
+
+                       <div class="col-sm-3">
+                           <div class="form-group">
+                               <label class="control-label">Product Price:</label>
+                               <input type="text" class="form-control" ng-model="price" />
+
+                           </div>
+                       </div>
+
+                       <div class="col-sm-3">
+                           <div class="mb-3">
+                               <label class="control-label">Qty:</label>
+                               <input type="text" class="form-control" ng-model="qty" />
+
+                           </div>
+                       </div>
+
+                       <div class="col-sm-3">
+                           <div class="mb-3">
+                               <label class="control-label">Remarks:</label>
+                               <input type="text" class="form-control" ng-model="remarks" />
+
+                           </div>
+                       </div>
+                   </div> 
+                   <div class="row">
+                       <div class="col-sm-12">
+                           <div class="mb-3">
+                               <input type="submit" value="Submit" id ="insertProd" class="form-control" ng-click="InsertProduct()"/>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+        <div ng-init="GetAllProduct()">
+            <h4>Product Record</h4>
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    PID
+                </th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Remarks</th>
+                <th>Action</th>
+            </tr>
+            <tr ng-repeat="pd in Product">
+                <td>{{pd.ProductID}}</td>
+                <td>{{pd.ProductName}}</td>
+                <td>{{pd.Price}}</td>
+                <td>{{pd.Qty}}</td>
+                <td>{{pd.Remarks}}</td>
+                <td>
+                    <input type="submit" ng-click="UpdateProduct(pd)" value="Update" class="btn btn-warning" />
+                    <input type="submit" ng-click="DeleteProduct(pd)" value="Delete" class="btn btn-danger" />
+
+
+                </td>
+            </tr>
+        </table>
+        </div>
+</div>
+    </div>
